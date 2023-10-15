@@ -7,6 +7,7 @@
 
     <title>UpConstruction Bootstrap Template - Index</title>
     <meta content="" name="description">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta content="" name="keywords">
 
     <!-- Favicons -->
@@ -65,8 +66,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('frontend/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('frontend/assets/vendor/php-email-form/validate.js') }}"></script>
-
-
 
     <!-- Template Main JS File -->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>

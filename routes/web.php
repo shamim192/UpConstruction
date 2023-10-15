@@ -1,8 +1,16 @@
 <?php
 
+use App\Http\Controllers\Admin\AltServiceSectionSettingController;
+use App\Http\Controllers\Admin\ConstructionSettingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\admin\ProjectSectionSettingController;
+use App\Http\Controllers\Admin\RecentBlogSettingController;
+use App\Http\Controllers\Admin\ServiceSectionSettingController;
+use App\Http\Controllers\admin\TestimonialSettingController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Models\TestimonialSetting;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,9 +26,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+
 
 
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,5 +46,13 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function(){
 
     Route::resource('hero',HeroController::class);
+    Route::resource('construction-setting',ConstructionSettingController::class);
+    Route::resource('service-setting',ServiceSectionSettingController::class);
+    Route::resource('alt-service-setting',AltServiceSectionSettingController::class);
+    Route::resource('project-setting', ProjectSectionSettingController::class);
+    Route::resource('testimonial-setting',TestimonialSettingController::class);
+    Route::resource('recent-blog-setting', RecentBlogSettingController::class);
+
+    
    
  });

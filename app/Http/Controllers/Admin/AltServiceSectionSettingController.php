@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Hero;
 use Illuminate\Http\Request;
+use App\Models\AltServiceSetting;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
-class HeroController extends Controller
+class AltServiceSectionSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $hero = Hero::first();
-        return view('admin.hero.index',compact('hero'));
+        $altService = AltServiceSetting::first(); 
+        return view('admin.alt-service-setting.index',compact('altService'));
     }
 
     /**
@@ -31,7 +31,7 @@ class HeroController extends Controller
      */
     public function store(Request $request)
     {
-      
+        //
     }
 
     /**
@@ -58,38 +58,27 @@ class HeroController extends Controller
         $request->validate([
             'title' => ['required', 'max:200'],
             'sub_title' => ['required', 'max:500'],
-            'btn_text' => ['required', 'max:200'],
-            'images.*' => ['mimes:jpeg,jpg,png,gif|max:3000'],
+            'image' => ['max:3000','image'],           
         ]);
-    
-        
-        if ($request->hasFile('images')) {
-            $images = [];
-            foreach ($request->file('images') as $image) {
-                $imageName = rand() . $image->getClientOriginalName();
-                $image->move(public_path('/uploads'), $imageName);
-                $images[] = "/uploads/" . $imageName;
-            }
-        
-            $hero = Hero::first();
-            if ($hero && isset($hero->images)) {
-                $existingImages = json_decode($hero->images, true);
-                foreach ($existingImages as $existingImage) {
-                    if (File::exists(public_path($existingImage))) {
-                        File::delete(public_path($existingImage));
-                    }
-                }
-            }
+
+        $altService =AltServiceSetting::first();
+        if($request->hasFile('image')){           
+           if($altService && File::exists(public_path($altService->image))){
+               File::delete(public_path($altService->image));
+           }
+           $image = $request->file('image');
+           $imageName = rand().$image->getClientOriginalName();
+           $image->move(public_path('/uploads'), $imageName);
+
+           $imagePath = "/uploads/".$imageName;            
         }
 
-    
-         Hero::updateOrCreate(
+        AltServiceSetting::updateOrCreate(
             ['id' => $id],
             [
                 'title' => $request->title,
                 'sub_title' => $request->sub_title,
-                'btn_text' => $request->btn_text,
-                'images' => isset($images) ? json_encode($images) : null,
+                'image' => isset($imagePath) ? $imagePath: $altService->image,            
             ]
         );
     

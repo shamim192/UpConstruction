@@ -6,10 +6,6 @@
 @include('frontend.sections.hero')
 <!-- Header-Area-End -->
 
-<!-- Quote-Area-Start -->
-@include('frontend.sections.quote')
-<!-- Quote-Area-End -->
-
 <!-- Construction-Area-Start -->
 @include('frontend.sections.construction')
 <!-- Construction-Area-End -->

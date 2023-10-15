@@ -7,7 +7,7 @@
       <div class="section-header-back">
         <a href="features-posts.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
       </div>
-      <h1>Hero Section </h1>
+      <h1>Alt Service Section Setting </h1>
      
     </div>
 
@@ -18,54 +18,46 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Update Hero Section </h4>
+              <h4>Update Alt Serivce Setting </h4>
             </div>
             <div class="card-body">
-                <form action="{{route('admin.hero.update',1)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.alt-service-setting.update',1)}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                 <div class="col-sm-12 col-md-7">
-                  <input type="text" name="title" class="form-control" value="{{$hero->title}}">
+                  <input type="text" name="title" class="form-control" value="{{$altService->title}}">
                 </div>
               </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub title</label>
                 <div class="col-sm-12 col-md-7">
-                 <textarea name="sub_title" class="form-control" style="height: 100px" id="" >{{$hero->sub_title}}</textarea>
-                </div>
-              </div>
-             
-              <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button Text</label>
-                <div class="col-sm-12 col-md-7">
-                  <input type="text" name="btn_text" class="form-control" value="{{$hero->btn_text}}">
+                 <textarea name="sub_title" class="form-control" style="height: 100px" id="" >{{$altService->sub_title}}</textarea>
                 </div>
               </div>
 
+              @if($altService->image)
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Preview Images</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Preview Image</label>
                 <div class="col-sm-12 col-md-7">
-                    @if(isset($hero) && $hero->images)
-                        @foreach(json_decode($hero->images) as $image)
-                            <img src="{{ asset($image) }}" alt="Preview Image" style="max-width: 200px; max-height: 200px; margin-bottom: 10px;">
-                        @endforeach
-                    @endif
-                </div>
-            </div>       
+                <img class="w-25" src="{{asset($altService->image)}}" alt="">
+              </div>
+              </div>
+              @endif             
             
+
               <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Background Images</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
                 <div class="col-sm-12 col-md-7">
                     <div class="custom-file">
-                        <input type="file" name="images[]" class="custom-file-input" id="customFile" multiple>
-                        <label class="custom-file-label" for="customFile">Choose files</label>
-                    </div>
+                        <input type="file" name="image" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
                 </div>
-            </div>
-
+              </div>
+          
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                 <div class="col-sm-12 col-md-7">
