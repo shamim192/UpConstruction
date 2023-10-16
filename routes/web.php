@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AltServiceSectionSettingController;
+use App\Http\Controllers\Admin\ConstructionItemController;
 use App\Http\Controllers\Admin\ConstructionSettingController;
 use App\Http\Controllers\admin\ContactInformationController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -52,12 +53,20 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function(){
 
     Route::resource('hero',HeroController::class);
-    Route::resource('construction-setting',ConstructionSettingController::class);
+    
+    //construction section
+    Route::resource('construction-setting', ConstructionSettingController::class);
+    Route::resource('construction-item', ConstructionItemController::class);
+
+
+
     Route::resource('service-setting',ServiceSectionSettingController::class);
     Route::resource('alt-service-setting',AltServiceSectionSettingController::class);
     Route::resource('project-setting', ProjectSectionSettingController::class);
     Route::resource('testimonial-setting',TestimonialSettingController::class);
     Route::resource('recent-blog-setting', RecentBlogSettingController::class);
+
+    // Footer Section 
     Route::resource('contact-info', ContactInformationController::class);
     Route::resource('useful-link', UsefulLinkController::class);
     Route::resource('social-link', SocialLinkController::class);

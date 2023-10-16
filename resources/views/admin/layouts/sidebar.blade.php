@@ -66,6 +66,7 @@
                     <span>Constructions</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.construction-setting.index') }}">Construction Setting</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.construction-item.index') }}">Construction Item</a></li>
                 </ul>
             </li>
 
