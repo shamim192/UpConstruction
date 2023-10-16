@@ -2,13 +2,19 @@
 
 use App\Http\Controllers\Admin\AltServiceSectionSettingController;
 use App\Http\Controllers\Admin\ConstructionSettingController;
+use App\Http\Controllers\admin\ContactInformationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\admin\ProjectSectionSettingController;
 use App\Http\Controllers\Admin\RecentBlogSettingController;
+use App\Http\Controllers\Admin\SecondServiceLinkController;
+use App\Http\Controllers\Admin\ServiceLinkController;
 use App\Http\Controllers\Admin\ServiceSectionSettingController;
+use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\admin\TestimonialSettingController;
+use App\Http\Controllers\Admin\ThirdServiceLinkController;
+use App\Http\Controllers\Admin\UsefulLinkController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Models\TestimonialSetting;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +58,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('project-setting', ProjectSectionSettingController::class);
     Route::resource('testimonial-setting',TestimonialSettingController::class);
     Route::resource('recent-blog-setting', RecentBlogSettingController::class);
+    Route::resource('contact-info', ContactInformationController::class);
+    Route::resource('useful-link', UsefulLinkController::class);
+    Route::resource('social-link', SocialLinkController::class);
+    Route::resource('service-link', ServiceLinkController::class);
+    Route::resource('second-service-link', SecondServiceLinkController::class);
+    Route::resource('third-service-link', ThirdServiceLinkController::class);
 
     
    
