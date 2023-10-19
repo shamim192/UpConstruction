@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\AltServiceItemController;
 use App\Http\Controllers\Admin\AltServiceSectionSettingController;
 use App\Http\Controllers\Admin\ConstructionItemController;
 use App\Http\Controllers\Admin\ConstructionSettingController;
 use App\Http\Controllers\admin\ContactInformationController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FeatureTabController;
+use App\Http\Controllers\Admin\FeatureTabItemController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\admin\ProjectSectionSettingController;
@@ -58,10 +61,17 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('construction-setting', ConstructionSettingController::class);
     Route::resource('construction-item', ConstructionItemController::class);
 
-
-
     Route::resource('service-setting',ServiceSectionSettingController::class);
+
+    // Alt Servcie section
     Route::resource('alt-service-setting',AltServiceSectionSettingController::class);
+    Route::resource('alt-service-item', AltServiceItemController::class);
+
+    // Feature section
+    Route::resource('feature-tab', FeatureTabController::class);
+    Route::resource('feature-tab-item',FeatureTabItemController::class);
+
+
     Route::resource('project-setting', ProjectSectionSettingController::class);
     Route::resource('testimonial-setting',TestimonialSettingController::class);
     Route::resource('recent-blog-setting', RecentBlogSettingController::class);
@@ -73,6 +83,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('service-link', ServiceLinkController::class);
     Route::resource('second-service-link', SecondServiceLinkController::class);
     Route::resource('third-service-link', ThirdServiceLinkController::class);
+   
 
     
    

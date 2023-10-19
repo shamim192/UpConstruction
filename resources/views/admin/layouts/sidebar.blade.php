@@ -83,6 +83,16 @@
                     <span>Alt Services</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.alt-service-setting.index') }}">Alt Service Setting</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.alt-service-item.index') }}">Alt Service Item</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Features</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.feature-tab.index') }}">Feature Tab</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.feature-tab-item.index') }}">Feature Tab Item</a></li>
                 </ul>
             </li>
 

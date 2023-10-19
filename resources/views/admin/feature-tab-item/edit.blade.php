@@ -7,7 +7,7 @@
             <div class="section-header-back">
                 <a href="features-posts.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Construction Item </h1>
+            <h1>Feature Item </h1>
 
         </div>
 
@@ -18,10 +18,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Edit Construction Item </h4>
+                            <h4>Edit Feature Item </h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.construction-item.update',$construction->id) }}" method="POST"
+                            <form action="{{ route('admin.feature-tab-item.update',$featureItem->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf   
                                 @method('PUT')
@@ -37,14 +37,14 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="title" class="form-control" value="{{$construction->title}}">
+                                        <input type="text" name="title" class="form-control" value="{{$featureItem->title}}">
                                     </div>
                                 </div>
 
                                   <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub title</label>
                                     <div class="col-sm-12 col-md-7">
-                                     <textarea name="sub_title" class="form-control" style="height: 100px" id="" >{{$construction->sub_title}}</textarea>
+                                     <textarea name="sub_title" class="form-control" style="height: 100px" id="" >{{$featureItem->sub_title}}</textarea>
                                     </div>
                                   </div>
                     
@@ -70,7 +70,7 @@
     <script>
         $(document).ready(function() {
             $('#image-preview').css({
-                'background-image': 'url("{{ asset($construction->image) }}")',
+                'background-image': 'url("{{ asset($featureItem->image) }}")',
                 'background-size': 'cover',
                 'background-position': 'center center'
             })
